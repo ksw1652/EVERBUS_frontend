@@ -1,0 +1,122 @@
+/*************** routesearch.html ***************/
+#select_region_btn_route {
+    width: 72px;
+}
+.input_searchNm {
+    margin:0;
+    height:30px;
+}
+#route_result_heading{
+    background-color: #74807B;
+    border-color: #74807B;
+    color:#FFFFFF;
+}
+#routes_div {
+    margin:0;
+}
+.route_recent_search_div {
+    padding-top:10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #3E4759;
+    color: #FA3855;
+}
+.station_recent_search_div {
+    padding-top:10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #3E4759;
+    color: #386EFA;
+}
+
+/*************** routedetail.html ***************/
+#routedetail_nav {
+    margin-bottom:0px;
+    background-color: #FFA344;
+}
+#routedetail_nav > a {
+    font-size: 25px;
+}
+#routedetail_refresh_btn {
+    padding-left: 5px;
+}
+#route_info_div {
+    box-shadow: 0px 3px 3px lightgray;
+    margin-bottom: 7px;
+}
+#route_info_div > div {
+    font-size: 10pt;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+
+.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+}
+.nav-justified > li > a {
+    color:#000000;
+}
+
+.arrow_div {
+    color:#808080;
+}
+
+.route_line{
+    width: 8px;
+    height: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #cbcbcb;
+}
+.route_triangle {
+    border-top: 4px solid #cbcbcb;
+    border-left: 4px solid transparent ;
+    border-right: 4px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1mm;
+}
+
+.route_ribbon {
+    /*-webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;*/
+    width: 0;
+    height: 0px;
+    border: 4px solid #cbcbcb;
+    border-top: 0 solid;
+    border-bottom: 4px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transform: rotateZ(180deg);
+    transform: rotateZ(180deg);
+}
+
+.rotate_route_ribbon {
+    width: 0;
+    height: 0px;
+    border: 4px solid #cbcbcb;
+    border-top: 0 solid;
+    border-bottom: 4px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rotate_route_triangle {
+    border-top: 4px solid #cbcbcb;
+    border-left: 4px solid transparent ;
+    border-right: 4px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1mm;
+    -webkit-transform: rotateZ(180deg);
+    transform: rotateZ(180deg);
+}
+
+
+.bus_icon_inRoute{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    padding:8px;
+}

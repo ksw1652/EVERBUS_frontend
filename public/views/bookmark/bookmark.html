@@ -1,0 +1,50 @@
+<div class="swipe_div" ng-class="animate_value" data-wow-duration="0.3s">
+    <toast></toast>
+
+    <div class="container">
+        <div class="bs-callout" id="alert_Msg_div" ng-show="alert_div">
+            <strong>{{bookmarkMessage}}</strong>
+        </div>
+    </div>
+    <div class="container list-group" id="bookmark_list_div">
+        <div class="col-xs-6" bindonce ng-repeat="bookmark in getBookmarkList">
+            <div class="bs-callout" style="height:100px; padding-bottom: 0px;">
+                <a class="list-group-item bookmark_btn"
+                   mn-touch secure-tap="goDetailPage(bookmark)" hold="open($index)">
+                    <div class="panel panel-default empty_panel">
+                        <!--design을 위한 빈 패널-->
+                    </div>
+                    <div>
+                        <img ng-show="check_show($index)" src="/images/busIcon_sm.png">
+                        <img ng-show="!check_show($index)" src="/images/busstopIcon_sm.png">
+                        <!--<span style="font-size: 14px;" ng-show="check_show($index)" bo-bind="bookmark.routenm | $string_length_filter"></span>
+                        <span style="font-size: 14px;" ng-show="!check_show($index)" bo-bind="bookmark.stopnm | $string_length_filter"></span>-->
+                        <small><span ng-show="check_show($index)" bo-bind="bookmark.routenm | $string_length_filter"></span></small>
+                        <small><span ng-show="!check_show($index)" bo-bind="bookmark.stopnm | $string_length_filter"></span></small>
+
+                    </div>
+                    <div class="bookmark_mid_padding"><!--중간 색상 표시-->
+                    </div>
+                    <!--세부내용 표시-->
+                    <div>
+                        <div style="font-size: 10px;" ng-show="check_show($index)">
+                            <span bo-bind="bookmark.ststopnm | limitTo:10"></span>
+                            <span bo-bind="bookmark.ststopnm.length > 7 ? '...' : ''"></span><br>
+                            <span> <--> </span><br>
+                            <span bo-bind="bookmark.edstopnm | limitTo:10"></span>
+                            <span bo-bind="bookmark.edstopnm.length > 7 ? '...' : ''"></span>
+                        </div>
+                        <div style="font-size: 12px;" ng-show="!check_show($index)">
+                            <span bo-bind="bookmark.arsid != null ? '{{bookmark.arsid}}' : ''"></span>
+                        </div>
+                        <div id="bookmark_region_div">
+                            <change-entoko english-name="bookmark.cityennm"></change-entoko>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span us-spinner="{lines:11, length:4, width:4, radius:10, corners:1.0, rotate:0, trail:100, speed:1.0}" spinner-key="bookmark_spinner"></span>

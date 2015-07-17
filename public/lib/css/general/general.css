@@ -1,0 +1,167 @@
+/*************** index.html ***************/
+
+#main_navtag {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    background-color: #FFA344;
+    /*background-color: #5A8C94;*/
+}
+#main_navtag > a {
+    font-family: 'Fredoka One', cursive;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+#main_navtag > a:hover, #main_navtag > a:focus {
+    color:#FFFFFF;
+}
+
+#index_config_btn, #index_config_btn:hover {
+    padding-left: 5px;
+    color: #ffffff;
+
+}
+
+#region_modal_div {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.region_btn{
+    margin-right: 2%; margin-bottom: 3%;
+}
+
+/*************** modal.html ***************/
+.modal-backdrop {
+    background-color: red;
+}
+
+/***** general ******/
+
+/*
+    미디어 쿼리를 통해 동적 폰트사이즈 지정
+    기본 body태그에 있는 폰트사이즈는 아래와 같이하면 줄어들지만 내가 직접 h6와 같이
+    지정해준 폰트는 사이즈가 줄어들지 않음.
+    따라서 기기 해상도별 h1~h6에 대한 사이즈를 직접 지정해주어야함.
+    아래에선 아이폰에대한 폰트 사이즈만 설정하였음.
+*/
+@media (max-width:320px){
+    body {
+        font-size:12px;
+    }
+    h5 {
+        font-size: 12px;
+    }
+    h6 {
+        font-size : 10px;
+    }
+    .place_searchInput {
+        font-size : 12px;
+        height:30px;
+    }
+    .placeSearch_btn {
+        font-size:12px;
+        height:35px;
+    }
+}
+
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+body, div, h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6{
+    font-family:'Nanum Gothic';
+}
+
+/** {
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}*/
+
+body {
+    background-color: #edf0f5;
+}
+
+.swipe_div {
+    height: 100%;
+}
+
+.back_btn {
+    padding-left:20px;
+}
+
+.search_div, .shadow_effect{
+    margin-bottom : 8px;
+    box-shadow: 0px 3px 3px lightgray;
+
+}
+
+.close.close_button {
+    color:#6DA6A6;
+    font-size: 17px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    /*AngularJS: 앱이 로드되기 전에 화면이 깜빡일 때 (ng-cloak)*/
+    display: none !important;
+}
+
+.btn.btn-block{
+    box-shadow: 0px 3px 3px lightgray;
+}
+
+.btn.btn-block.temp_stop{
+    background-color: #95a5a6;
+    box-shadow: 0px 3px 3px lightgray;
+}
+
+.footer-border {
+    border-top:0px;
+}
+
+.header-border {
+    border-bottom: 0px;
+}
+
+.map_directive {
+    position: relative;
+    display:inherit;
+    height: 250px;
+}
+
+/*routesearch, stationsearch list 부분 적용 css*/
+.searchResult_panel > div > a:focus, .searchResult_panel > div > a:active {
+    background-color: rgb(207, 211, 218) !important;
+}
+
+.displayedList_item {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    background-color: #EDF0F5;
+    border-bottom: 1px solid #D8D8D8;
+    margin-bottom:0px;
+}
+
+.displayedList_item:focus, .displayedList_item:active {
+    background-color: rgb(207, 211, 218) !important;
+}
+
+.region_div{
+    text-align: center;
+}
+
+.topRegion_div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #3E4759;
+    font-weight: bold;
+    font-size : 17px;
+    margin-bottom:10px;
+    margin-top:15px;
+}
+
+.division_div > div {
+    padding-left:20px;
+}

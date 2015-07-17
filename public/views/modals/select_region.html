@@ -1,0 +1,36 @@
+<div class="modal-header header-border">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+    <h4 class="modal-title" id="myModalLasbel">지역선택<span style="font-size: 12px;">(선택된 지역위주로 검색합니다)</span></h4>
+
+</div>
+
+<!--
+<div class="modal-body" style="padding:15px;">
+    <div class="row">
+        <div class="col-xs-6 division_div" ng-repeat="division in all_division" ng-init="parentIndex = $index">
+            <input id="{{division.admin_division}}" type="checkbox" ng-model="division.admin_checked" ng-click="division_clicked($index)" />
+            <label for="{{division.admin_division}}"style="font-size:17px; color:#687B8C;">{{division.admin_division}}</label>
+            <div ng-repeat="item in division.data">
+                <input id="{{item.regioncode}}" type="checkbox" ng-model="item.checked" ng-click="item_parent_check(division, parentIndex)"/>
+                <label for="{{item.regioncode}}" style="font-size:15px;">{{item.regionnm}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="modal-body">
+    <ul class="list-group" ng-repeat="division in all_division" ng-init="parentIndex = $index">
+        <input id="{{division.admin_division}}" type="checkbox" ng-model="division.admin_checked" ng-click="division_clicked($index)" />
+        <label for="{{division.admin_division}}"style="font-size:17px; color:#687B8C;">{{division.admin_division}}</label>
+        <li style="border-left:0px; border-right:0px; padding-top:5px; padding-bottom:5px;" class="list-group-item" ng-repeat="item in division.data">
+            <input id="{{item.regioncode}}" type="checkbox" ng-model="item.checked" ng-click="item_parent_check(division, parentIndex)"/>
+            <label for="{{item.regioncode}}" style="font-size:15px;">{{item.regionnm}}</label>
+        </li>
+    </ul>
+    <div class="btn-group container-fluid" role="group" style="display:block;">
+        <a class="btn btn-default col-xs-4" ng-click="selectAll()">전체 선택</a>
+        <a class="btn btn-default col-xs-4" ng-click="reset()">초기화</a>
+        <a class="btn btn-default col-xs-4" ng-click="ok()">확인</a>
+    </div>
+</div>

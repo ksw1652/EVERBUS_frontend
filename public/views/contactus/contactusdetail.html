@@ -1,0 +1,167 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="contactusdetail_nav" role="navigation">
+    <a class="navbar-brand back_btn" ng-click="back_toContactus()">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+    <a class="navbar-brand">
+        {{contactusdetail_title}}
+    </a>
+</nav>
+
+<div ng-class="animate_value" data-wow-duration="0.7s">
+    <div class="container" ng-show="aboutappCheck">
+        <div class="jumbotron contactusdetail_jumbo shadow_effect">
+            <div class="container ">
+
+                    &nbsp;&nbsp;버스를 타긴 타야하는데 정류장 위치가 헷갈리죠?<br><br>
+                    &nbsp;&nbsp;내가 타야될 그 버스가 여기서 서는건가요? 아니면 반대차선에서 서는 건가요?<br><br>
+                    &nbsp;&nbsp;난생 처음 가본 동네에서 일단 택시를 타신다구요?<br><br>
+
+                    &nbsp;&nbsp;새로운 감각의 버스 어플리케이션 “에버버스” 등! 장!<br><br>
+                    &nbsp;&nbsp;이제는 버스 어플리케이션도 개성이 있어야 할때!<br><br>
+
+                    < 여러분이 누릴 수 있는 편안한 기능들 ><br><br>
+                    1.즐겨찾기<br>
+                    2.노선검색<br>
+                    3.정류장검색<br>
+                    4.길찾기<br><br>
+
+                    &nbsp;&nbsp;처음 가는 지역의 버스도 모두 내 손 안에 있다!<br><br>
+                    &nbsp;&nbsp;직항 노선부터  환승 노선 그리고 실시간 도착 정보까지 모두 조회 가능한 화사한 버스 어플리케이션<br><br>
+                    &nbsp;&nbsp;직접 한번 써보세요! 맘에들면 옆에 친구에게 살포시 홍보 부탁드려요 ^______^<br><br>
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="container" ng-show="versionCheck">
+        <div class="jumbotron contactusdetail_jumbo shadow_effect">
+            <div class="container" >
+                <div class="container">
+                    현재 버전 : 1.1v
+                    <br><br>
+                    <a href="https://market.android.com/details?id=com.telerik.Globus01" class="btn btn-default btn-block">
+                        최신 버전 : 1.1v
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="container-fluid" ng-show="appdatadeleteCheck">
+        <br>
+        <ul class="list-group shadow_effect">
+            <li class="list-group-item">
+                <input id="bookmark_checkbox" type="checkbox" ng-model="bookmark_checkbox"/>
+                <label for="bookmark_checkbox" style="font-size:16px;">즐겨찾기</label>
+            </li>
+            <li class="list-group-item">
+                <input id="recentroute_checkbox" type="checkbox" ng-model="recentroute_checkbox"/>
+                <label for="recentroute_checkbox" style="font-size:16px;">최근 노선 검색</label>
+            </li>
+            <li class="list-group-item">
+                <input id="recentstation_checkbox" type="checkbox" ng-model="recentstation_checkbox"/>
+                <label for="recentstation_checkbox" style="font-size:16px;">최근 정류소 검색</label>
+            </li>
+        </ul>
+        <div class="btn-group col-xs-12" role="group" style="padding:0px;">
+            <a class="btn btn-default col-xs-4" ng-click="check_all()">전체 선택</a>
+            <a class="btn btn-default col-xs-4" ng-click="check_clear()">초기화</a>
+            <a class="btn btn-default col-xs-4" ng-click="delete_checked(bookmark_checkbox, recentroute_checkbox, recentstation_checkbox)">선택 삭제</a>
+        </div>
+    </div>
+
+    <div class="container" ng-show="locationCheck">
+        <div class="jumbotron contactusdetail_jumbo shadow_effect">
+            <div class="container">
+                &nbsp;&nbsp;본 어플리케이션에서는 '길찾기' 서비스 이용시 사용자의 위치를 지도 상에 표시합니다.<br><br>
+                &nbsp;&nbsp;이 때 사용자의 위치정보가 이용되며, 원하지 않는 경우 위치 정보 사용을 거부 할 수 있습니다.<br><br>
+                &nbsp;&nbsp;위치정보 사용을 거부 하더라도 어플리케이션의 대부분의 기능을 사용 하실 수 있습니다.<br><br>
+
+                1. 사용자의 위치정보를 이용하는 서비스명 : 길찾기<br><br>
+                2. 사용자의 위치정보 이용 과정  : 길찾기 서비스를 통해 사용자가 경로를 검색하게 되면 화면상에 지도가 나타나며
+                Google maps API v3 을 통해 사용자의 위치가 자동으로 표시됩니다.<br><br>
+                3. 사용자의 위치 정보의 보유 및 이용기간 : 위치정보는 수집되지 않으며 서비스 제공의 목적으로만 사용됩니다.<br><br>
+                4. 서비스 제공자 : 아이에프(I.F)<br>
+                (makeyourif@gmail.com)<br>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" ng-show="infosourceCheck">
+        <div class="jumbotron contactusdetail_jumbo shadow_effect">
+            &nbsp;&nbsp;에버버스는 각 지자체의 버스 정보시스템에서 실시간 노선정보와 정류소정보를 받아와 동작합니다.<br><br>
+            &nbsp;&nbsp;따라서 지자체의 시스템이 변경 될 경우, 실시간 데이터를 표시하는데 문제가 생길 수 있습니다.<br><br>
+            &nbsp;&nbsp;이점 참고하시기 바라며, 버그나 에러가 발생하였을 시 문의 메일을 통해 알려주시면 감사하겠습니다.<br>
+        </div>
+        <div class="list-group shadow_effect">
+            <a class="list-group-item active" style="background-color: #3E4759;">
+                정보 제공처
+            </a>
+            <a href="http://www.data.go.kr" class="list-group-item">서울, 경기 : http://www.data.go.kr
+            </a>
+            <a href="http://m.ictr.or.kr" class="list-group-item">인천 : http://m.ictr.or.kr
+            </a>
+            <a href="http://bus.asan.go.kr/web/main" class="list-group-item">아산 : http://bus.asan.go.kr/web/main
+            </a>
+            <a href="http://its.cheonan.go.kr" class="list-group-item">천안 : http://its.cheonan.go.kr
+            </a>
+            <a href="http://bus.busan.go.kr" class="list-group-item">부산 : http://bus.busan.go.kr
+            </a>
+
+            <a href="http://mbus.changwon.go.kr" class="list-group-item">창원 : http://mbus.changwon.go.kr
+            </a>
+            <a href="http://www.chbis.kr" class="list-group-item">춘천, 홍천 : http://www.chbis.kr
+            </a>
+            <a href="http://its.wonju.go.kr" class="list-group-item">원주 : http://its.wonju.go.kr
+            </a>
+            <a href="http://www.dcbis.go.kr" class="list-group-item">청주 : http://www.dcbis.go.kr
+            </a>
+            <a href="http://traffic.daejeon.go.kr" class="list-group-item">대전 : http://traffic.daejeon.go.kr
+            </a>
+
+            <a href="http://m.its.ulsan.kr" class="list-group-item">울산 : http://m.its.ulsan.kr
+            </a>
+            <a href="http://m.businfo.go.kr" class="list-group-item">대구 : http://m.businfo.go.kr
+            </a>
+            <a href="http://bus.gimhae.go.kr" class="list-group-item">김해 : http://bus.gimhae.go.kr
+            </a>
+            <a href="http://m.bis.gumi.go.kr" class="list-group-item">구미 : http://m.bis.gumi.go.kr
+            </a>
+            <a href="http://bis.miryang.go.kr" class="list-group-item">밀양 : http://bis.miryang.go.kr
+            </a>
+
+            <a href="http://bis2.ipohang.org" class="list-group-item">포항 : http://bis2.ipohang.org
+            </a>
+            <a href="http://bms.tongyeong.go.kr" class="list-group-item">통영 : http://bms.tongyeong.go.kr
+            </a>
+            <a href="http://bus.yangsan.go.kr" class="list-group-item">양산 : http://bus.yangsan.go.kr
+            </a>
+            <a href="http://bis.geoje.go.kr" class="list-group-item">거제 : http://bis.geoje.go.kr
+            </a>
+            <a href="http://bis.jinju.go.kr" class="list-group-item">진주 : http://bis.jinju.go.kr
+            </a>
+
+            <a href="http://bis.gbgs.go.kr" class="list-group-item">경산 : http://bis.gbgs.go.kr
+            </a>
+            <a href="http://bus.chilgok.go.kr" class="list-group-item">칠곡 : http://bus.chilgok.go.kr
+            </a>
+            <a href="http://mbis.gwangyang.go.kr" class="list-group-item">광양 : http://mbis.gwangyang.go.kr
+            </a>
+            <a href="http://mbis.sc.go.kr" class="list-group-item">순천 : http://mbis.sc.go.kr
+            </a>
+            <a href="http://its.yeosu.go.kr" class="list-group-item">여수 : http://its.yeosu.go.kr
+            </a>
+
+            <a href="http://www.jeonjuits.go.kr" class="list-group-item">전주 : http://www.jeonjuits.go.kr
+            </a>
+            <a href="http://m.bus.gjcity.net" class="list-group-item">광주 : http://m.bus.gjcity.net
+            </a>
+            <a href="http://bis.mokpo.go.kr" class="list-group-item">목포 : http://bis.mokpo.go.kr
+            </a>
+            <a href="http://m.bis.hwasun.go.kr" class="list-group-item">화순 : http://m.bis.hwasun.go.kr
+            </a>
+            <a href="http://bus.jeju.go.kr" class="list-group-item">제주 : http://bus.jeju.go.kr
+            </a>
+        </div>
+    </div>
+</div>

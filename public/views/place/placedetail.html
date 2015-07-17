@@ -1,0 +1,239 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="placedetail_nav" role="navigation">
+    <a class="navbar-brand back_btn" ng-click="back_toPlacesearch()">
+        <i class="fa fa-arrow-left fa-lg"></i>
+    </a>
+    <a class="navbar-brand">
+        {{pathName.length > 18 ? (pathName | limitTo : 18) + "..." : pathName}}
+    </a>
+</nav>
+
+<div>
+    <div class="well well-sm" id="placedetail_well" >
+        <div class="row">
+            <div class="col-xs-9">
+                <span>총 거리 : {{path_distance / 1000 | limitTo : 4}}km</span>
+                <span ng-show="check_dirObject">( 도보 : 약 {{path_walking_dis}} )</span>
+            </div>
+            <div class="col-xs-3">
+                <a ng-click="goFullscreen()" class="btn btn-sm" style="color:#2c3e50; padding: 0px;">
+                    <i class="ion-arrow-expand"></i>&nbsp;&nbsp;&nbsp;
+                    전체화면
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <map class="map_directive" zoom="{{map_zoomOpt}}" center="{{center_position}}"
+             zoom-control-options="{style:'SMALL', position:'LEFT_TOP'}" map-type-control="false"
+             map-lazy-load="http://maps.google.com/maps/api/js">
+            <info-window id="busstop_infowindow" visible-on-marker="current_busstop">
+                <div>{{busstop_inMap}}에서 {{bus_inMap}} 탑승</div>
+            </info-window>
+            <marker id="current_busstop" position="{{center_position}}" icon="/images/busStop_inMap.png" animation="Animation.BOUNCE" centered="true"></marker>
+            <directions ng-if="check_dirObject"
+                    draggable="true"
+                    panel=""
+                    travel-mode="{{travelMode}}"
+                    waypoints=""
+                    origin="{{origin_position}}"
+                    destination="{{desti_position}}">
+            </directions>
+        </map>
+    </div>
+</div>
+
+<div class="container">
+    <div class="list-group">
+        <a class="list-group-item displayedList_item" ng-show="check_dirObject">
+            <div class="row ">
+                <div class="col-xs-12 arrow_div">
+                    <img src="/images/walkman_inPlace.png" class="place_imgPadding img-responsive">&nbsp;&nbsp;&nbsp;
+                    {{fstopnm}} 까지 도보로 약 {{walk_time}}
+                </div>
+            </div>
+        </a>
+        <a class="list-group-item displayedList_item" ng-click="getFirstStationDetail()">
+            <!--출발지 정류장-->
+            <div class="row" style="padding-top:10px;">
+                <div class="col-xs-2">
+                    <img src="/images/busIcon_inPlace.png" class="place_imgPadding img-responsive">
+                    <div class="place_line"></div>
+                    <div class="place_triangle"></div>
+                </div>
+                <div class="col-xs-10">
+                    <h5><span class="stop_span">{{fstopnm}}</span> 정류장에서 <span class="bus_span">{{froutenm}}</span> 번 탑승</h5>
+                    <i class="fa fa-spinner fa-lg" ng-show="first_loading" ng-class="{'fa-spin': first_loading}"></i>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <span style="font-size:12px;" ng-show="!first_loading">{{fremain_time == "" || fremain_time == undefined ? "도착 예정정보를 가져오지 못했습니다." : fremain_time}}</span>
+                        </div>
+                        <div class="col-xs-7">
+                            <span style="font-size:12px;" ng-show="!first_loading">{{fcur_pos == "" || fcur_pos == undefined ? "" : "현재위치 : " + fcur_pos}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a class="list-group-item displayedList_item" ng-click="getTrnsStationDetail()" ng-show="check_trans()">
+            <!--환승지 정류장-->
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="place_ribbon"></div>
+                    <div class="place_line"></div>
+                    <img src="/images/busIcon_inPlace.png" class="place_imgPadding img-responsive">
+                    <div class="place_line"></div>
+                    <div class="place_triangle"></div>
+                </div>
+                <div class="col-xs-10">
+                    <h5><span class="stop_span">{{tstopnm}}</span> 정류장에서 하차 후 <span class="bus_span">{{troutenm}}</span> 번 탑승</h5>
+                    <i class="fa fa-spinner fa-lg" ng-show="trans_loading" ng-class="{'fa-spin': trans_loading}"></i>
+
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <span style="font-size:12px;" ng-show="!trans_loading">{{tremain_time == "" || tremain_time == undefined ? "도착 예정정보를 가져오지 못했습니다." : tremain_time}}</span>
+                        </div>
+                        <div class="col-xs-7">
+                            <span style="font-size:12px;" ng-show="!trans_loading">{{tcur_pos == "" || tcur_pos == undefined ? "" : "현재위치 : " + tcur_pos}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a class="list-group-item displayedList_item">
+            <!--도착지 정류장-->
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="place_ribbon"></div>
+                    <div class="place_line"></div>
+                    <img src="/images/busstop_icon_inPlace.png" class="place_imgPadding img-responsive">
+                </div>
+                <div class="col-xs-10">
+                    <span class="stop_span">{{estopnm}}</span>에서 하차
+                </div>
+                <!--<div class="col-xs-4">
+                    <img src="/images/busstop_icon_inPlace.png">&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-xs-8 blockquote-reverse">
+                    {{estopnm}}에서 하차
+                </div>-->
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+        <!--<map zoom="14" center="{{origin_position}}" style="height:90%" >
+            <directions
+                    draggable="true"
+                    panel=""
+                    travel-mode="{{travelMode}}"
+                    waypoints=""
+                    origin="{{origin_position}}"
+                    destination="{{desti_position}}">
+            </directions>
+        </map>-->
+
+    <!--<div class="alert alert-info" ng-show="infoMsgDiv" id="alert_div">{{infoMsg}}</div>-->
+    <!--<div class="panel panel-primary" id="placedetail_route">
+        <div class="panel-heading" id="placedetail_route_heading">상세 경로</div>
+        <div class="list-group" id="pathdeatil_repeat_div">
+            <a class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6" id="pathdetail_repeat_left">
+                        <h5>안양역</h5>
+                        <h6>1523번</h6>
+                    </div>
+                    <div class="col-xs-6" id="pathdetail_repeat_right">
+                        <div><h5>약 7분 후 도착</h5></div>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6" style="text-align: center;">
+                        <h5>디지털단지 오거리</h5>
+                        <h6>77번</h6>
+                    </div>
+                    <div class="col-xs-6" style="text-align: center; margin-top:10px;">
+                        <div><h5>약 4분 후 도착</h5></div>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6" id="desti_left">
+                        <h5>홍대입구역</h5>
+                    </div>
+                    <div class="col-xs-6" id="desti_right">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>-->
+
+<!--
+<div>
+    <div class="well well-sm" ng-show="dataCheck">
+        <h6 id="alldis_alltime_h6">
+            &lt;!&ndash;총 거리 : {{all_dis}}km &nbsp;&nbsp;&nbsp;
+            총 소요 시간 : 약 {{all_hour}}시간 {{all_minute}}분&ndash;&gt;
+            총 거리 : 23.56km &nbsp;&nbsp;&nbsp;
+            총 소요 시간 : 약 1시간 12분
+        </h6>
+    </div>
+    <h4 id="takeposi_h4" ng-show="dataCheck">
+        <span class="label label-success">탑승위치</span>
+    </h4>
+    <div ng-if="dataCheck">
+        <br>
+        <map zoom="16" center="{{center.position}}" id="placedetail_map">
+            <marker position="{{center.position}}" centered="true"></marker>
+            <shape name="polyline" id="foo"
+                   path="[{{arrowPositions.arrowPo_start}},{{arrowPositions.arrowPo_end}}]"
+                   icons="[{
+                            icon: {
+                                path: 'FORWARD_CLOSED_ARROW'
+                            },
+                            offset: '100%'
+                        }]" stroke-color="#2c3e50" stroke-opacity="0.7" stroke-weight="4">
+            </shape>
+            <marker position="current-location" icon="/images/imhere.png"></marker>
+        </map>
+    </div>
+    <div class="alert alert-info" ng-show="infoMsgDiv" id="alert_div">{{infoMsg}}</div>
+    <br>
+    <div class="panel panel-primary" id="placedetail_route" ng-show="dataCheck">
+        <div class="panel-heading" id="placedetail_route_heading">상세 경로</div>
+        <div class="panel-body">
+            <div class="list-group" ng-repeat = "pathinfo in place_data.pathList" id="pathdeatil_repeat_div">
+                <a class="list-group-item"
+                   ng-click="getdetaildata(pathinfo.fid[0], pathinfo.fname[0],pathinfo.routeId[0], pathinfo.routeNm[0], pathinfo.fx[0], pathinfo.fy[0], $index)">
+                    <div class="row">
+                        <div class="col-xs-6" id="pathdetail_repeat_left">
+                            <h5>{{pathinfo.fname[0]}}</h5>
+                            <h6>{{pathinfo.routeNm[0]}}</h6>
+                        </div>
+                        <div class="col-xs-6" ng-if="$index == timerstatecode" id="pathdetail_repeat_right">
+                            <remain-time arrive-time="remainTimedata" is-last="last" service-code="servicecode" region-code="11">{{remainTimedata}}</remain-time>
+                        </div>
+                    </div>
+                </a>
+                <a class="list-group-item" ng-if="$last">
+                    <div class="row">
+                        <div class="col-xs-6" id="desti_left">
+                            <h5>{{pathinfo.tname[0]}}</h5>
+                        </div>
+                        <div class="col-xs-6" id="desti_right">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<span us-spinner="{lines:11, length:32, width:10, radius:23, corners:1.0, rotate:0, trail:100, speed:1.0}" spinner-key="placeDetail_spinner"></span>

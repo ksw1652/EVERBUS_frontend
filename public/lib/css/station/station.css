@@ -1,0 +1,46 @@
+/*************** stationsearch.html ***************/
+#select_region_btn_station {
+    width: 72px;
+}
+#station_result_heading{
+    background-color: #74807B;
+    border-color: #74807B;
+    color:#FFFFFF;
+}
+
+#stations_div {
+    margin:0;
+}
+
+/*************** stationdetail.html ***************/
+#stationdetail_nav{
+    background-color: #FFA344;
+}
+
+#getStationNm_a{
+    font-size: 13px;
+}
+#stationdetail_div {
+    margin-bottom:0px;
+}
+#stationdetail_div > a {
+    font-size: 28px;
+}
+#stationdetail_refresh_btn {
+    padding-left: 5px;
+
+}
+#station_posi {
+    margin: 0px;
+}
+#station_posi>span {
+    background-color: #78A2D0;
+}
+
+#soonarrive_repeat_h3 {
+    margin-top:0px;
+    display:inline-block;
+}
+#stationdetail_div {
+    margin:0;
+}

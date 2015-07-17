@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="contactusdetail_nav" role="navigation">
+    <a class="navbar-brand back_btn" ng-click="back_toPlacedetail()">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+    <a class="navbar-brand">
+        {{pathName}}
+    </a>
+</nav>
+<div ng-class="animate_value" data-wow-duration="0.4s"  map-lazy-load="http://maps.google.com/maps/api/js">
+    <map center="{{center_position}}"
+         zoom-control="true" zoom-control-options="{style:'SMALL', position:'LEFT_TOP'}" map-type-control="false"
+         ng-style="{ 'height' :  screen_height}">
+        <marker id="fbusstop" position="{{fstop_position}}" icon="{{fbus_icon}}" on-click="click('first')"></marker>
+        <info-window visible-on-marker="fbusstop">
+            <div>{{fstop_num}}.&nbsp;&nbsp;{{fbusstop_inMap}}에서 {{fbus_inMap}} 탑승</div>
+        </info-window>
+
+        <marker id="tbusstop" position="{{tstop_position}}" ng-if="trans_check" icon="{{tbus_icon}}" on-click="click('trn')"></marker>
+        <info-window visible-on-marker="tbusstop">
+            <div>{{tstop_num}}.&nbsp;&nbsp;{{tbusstop_inMap}}에서 {{tbus_inMap}} 탑승</div>
+        </info-window>
+
+        <marker id="ebusstop" position="{{estop_position}}" icon="{{ebus_icon}}" on-click="click('end')"></marker>
+        <info-window visible-on-marker="ebusstop">
+            <div>{{estop_num}}.&nbsp;&nbsp;{{ebusstop_inMap}}에서 하차</div>
+        </info-window>
+    </map>
+</div>

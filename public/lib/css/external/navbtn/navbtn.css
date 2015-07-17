@@ -1,0 +1,41 @@
+@media (max-width:320px){
+    .nav-btn, .nav-btn:hover, .nav-btn:active{
+        font-size: 14px;
+    }
+}
+
+.nav-btn {
+    /*color: #fff;*/
+    color : #3E4759;
+    /*background-color: #687B8C;
+    border-bottom:2px solid #687B8C;*/
+    /*background-color: #FFA344;
+    border-bottom:2px solid #FFA344;*/
+    border-radius: 0px;
+    border-top:0px;
+    border-right:0px;
+    border-left:0px;
+    border-bottom: 1px solid #D8D8D8;
+    /*box-shadow: 0px 2px 2px lightgray;*/
+}
+
+/*스마트폰에선 nav_btn클릭시 폰트의 색이 흰색으로 보여짐*/
+.nav-btn:active, .nav-btn:focus, .nav-btn:hover {
+    color:#FFA344;
+}
+
+/*mainController에 isActive함수를 통해 true함수를 전달받으면 (해당 버튼이 활성화이면) 아래의 css를 적용*/
+/*nav_btn아래의 활성화 표시 css (활성화된 버튼에 밑줄!!)*/
+.curr_active{
+    color:#FFA344;
+    border-bottom: 5px solid #FFA344;
+/*
+border-bottom: 5px solid #3E4759;
+
+border-bottom: 5px solid #FFEFA3;
+*/
+
+}
+
+
+

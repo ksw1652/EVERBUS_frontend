@@ -1,0 +1,37 @@
+<div class="swipe_div"
+     ng-class="animate_value" data-wow-duration="0.4s" ng-swipe-right="goLeft()">
+
+    <div class="container-fluid">
+        <br>
+        <div class="list-group shadow_effect">
+            <a class="list-group-item" ng-click="gotoDetail('aboutapp', '에버버스는')">
+                <i class="fa fa-question-circle fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                에버버스는
+            </a>
+            <!--<a class="list-group-item" ng-click="gotoDetail('version', '버전 정보')">
+                <i class="fa fa-download fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                버전 정보
+            </a>-->
+            <a class="list-group-item" ng-click="gotoDetail('appdata', '앱 데이터 삭제')">
+                <i class="fa fa-trash-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                앱 데이터 삭제
+            </a>
+            <a class="list-group-item" ng-click="redo_select_region()">
+                <i class="fa fa-check-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                지역 선택
+            </a>
+            <a class="list-group-item" ng-click="open()">
+                <i class="fa fa-envelope fa-lg"></i>&nbsp;&nbsp;&nbsp;
+                오류 및 문의 메일 보내기
+            </a>
+            <a class="list-group-item" ng-click="gotoDetail('location', '위치정보 이용 동의')">
+                <i class="fa fa-location-arrow fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                위치정보 이용 동의
+            </a>
+            <a class="list-group-item" ng-click="gotoDetail('infosource', '정보 제공처')">
+                <i class="fa fa-info-circle fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                정보 제공처
+            </a>
+        </div>
+    </div>
+</div>

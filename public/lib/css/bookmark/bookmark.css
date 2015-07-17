@@ -1,0 +1,50 @@
+/***** bookmark.html *****/
+
+#path_title{
+    background-color: forestgreen;
+}
+#alert_Msg_div{
+    text-align: center;
+}
+.bookmark_col_div {
+    height: 30px;
+    font-size: 17px;
+    padding-top: 2px;
+    text-align: center;
+}
+#stationNm_div {
+    height: 30px;
+    font-size: 15px;
+    padding-top: 4px;
+}
+.bookmark_mid_padding {
+    height:3px;
+    background-color: #cbcbcb;
+}
+#bookmark_list_div > div {
+    padding-left:10px;
+    padding-right:5px;
+}
+#bookmark_list_div > div > div{
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top:10px;
+    padding-top:0px;
+    padding-right:0px;
+    padding-left:0px;
+}
+#bookmark_list_div > div > div > div{
+    border:0px;
+    width:100%;
+}
+#bookmark_list_div > div > div > div > button {
+    color:#6DA6A6;
+}
+
+
+#bookmark_region_div {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    font-size: 10px;
+}

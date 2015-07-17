@@ -1,0 +1,201 @@
+[
+  {
+    "admin_division" : "수도권",
+    "admin_checked" : false,
+    "data" :
+    [
+      {
+        "regionnm": "서울",
+        "regioncode": "101",
+        "regionennm": "seoul",
+        "checked" : false
+      },
+      {
+        "regionnm": "경기",
+        "regioncode": "102",
+        "regionennm": "gyunggi",
+        "checked" : false
+      },
+      {
+        "regionnm": "인천",
+        "regioncode": "103",
+        "regionennm": "incheon",
+        "checked" : false
+      }
+    ]
+  },
+  {
+    "admin_division" : "충청도",
+    "admin_checked" : false,
+    "data" :
+    [
+      {
+        "regionnm": "아산",
+        "regioncode": "301",
+        "regionennm": "asan",
+        "checked" : false
+      },
+      {
+        "regionnm": "천안",
+        "regioncode": "302",
+        "regionennm": "cheonan",
+        "checked" : false
+      },
+      {
+        "regionnm": "세종",
+        "regioncode": "305",
+        "regionennm": "sejong",
+        "checked" : false
+      },
+      {
+        "regionnm": "청주",
+        "regioncode": "303",
+        "regionennm": "chungju",
+        "checked" : false
+      },
+      {
+        "regionnm": "대전",
+        "regioncode": "304",
+        "regionennm": "daejeon",
+        "checked" : false
+      }
+    ]
+  },
+  {
+    "admin_division" : "경상도",
+    "admin_checked" : false,
+    "data" :
+    [
+      {
+        "regionnm": "대구",
+        "regioncode": "403",
+        "regionennm": "daegu",
+        "checked" : false
+      },
+      {
+        "regionnm": "구미",
+        "regioncode": "406",
+        "regionennm": "gumi",
+        "checked" : false
+      },
+      {
+        "regionnm": "포항",
+        "regioncode": "408",
+        "regionennm": "pohang",
+        "checked" : false
+      },
+      {
+        "regionnm": "통영",
+        "regioncode": "409",
+        "regionennm": "tongyeong",
+        "checked" : false
+      },
+      {
+        "regionnm": "진주",
+        "regioncode": "412",
+        "regionennm": "jinju",
+        "checked" : false
+      },
+      {
+        "regionnm": "부산",
+        "regioncode": "401",
+        "regionennm": "busan",
+        "checked" : false
+      },
+      {
+        "regionnm": "창원",
+        "regioncode": "404",
+        "regionennm": "changwon",
+        "checked" : false
+      },
+      {
+        "regionnm": "울산",
+        "regioncode": "402",
+        "regionennm": "ulsan",
+        "checked" : false
+      },
+      {
+        "regionnm": "거제",
+        "regioncode": "411",
+        "regionennm": "geoje",
+        "checked" : false
+      },
+      {
+        "regionnm": "김해",
+        "regioncode": "405",
+        "regionennm": "gimhae",
+        "checked" : false
+      }
+    ]
+
+  },
+  {
+    "admin_division" : "전라도",
+    "admin_checked" : false,
+    "data" :
+    [
+      {
+        "regionnm": "화순",
+        "regioncode": "508",
+        "regionennm": "hwasoon",
+        "checked" : false
+      },
+      {
+        "regionnm": "전주",
+        "regioncode": "504",
+        "regionennm": "jeonju",
+        "checked" : false
+      },
+      {
+        "regionnm": "여수",
+        "regioncode": "503",
+        "regionennm": "yeosu",
+        "checked" : false
+      },
+      {
+        "regionnm": "목포",
+        "regioncode": "507",
+        "regionennm": "mokpo",
+        "checked" : false
+      },
+      {
+        "regionnm": "광양",
+        "regioncode": "501",
+        "regionennm": "gwangyang",
+        "checked" : false
+      },
+      {
+        "regionnm": "순천",
+        "regioncode": "502",
+        "regionennm": "sunchun",
+        "checked" : false
+      }
+    ]
+  },
+  {
+    "admin_division" : "강원도",
+    "admin_checked" : false,
+    "data" :
+    [
+      {
+        "regionnm": "춘천홍천",
+        "regioncode": "201",
+        "regionennm": "chuncheon",
+        "checked" : false
+      }
+    ]
+  },
+  {
+    "admin_division" : "제주특별자치도",
+    "admin_checked" : false,
+    "data" :
+    [
+      {
+        "regionnm": "제주",
+        "regioncode": "601",
+        "regionennm": "jeju",
+        "checked" : false
+      }
+    ]
+  }
+]

@@ -1,0 +1,99 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="routedetail_nav" role="navigation">
+    <a class="navbar-brand back_btn" ng-click="back_toRoutesearch()">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+    <a class="navbar-brand">
+        {{routenm | limitTo:8}}
+    </a>
+
+    <span class="btn-group pull-right">
+        <a class="navbar-brand" ng-click="addBookmark()">
+            <i class="fa fa-star-o fa-lg" ng-show="star_o"></i>
+            <i class="fa fa-star fa-lg" ng-show="star"></i>
+        </a>
+        <a class="navbar-brand" id="routedetail_refresh_btn" ng-click="refresh_routeData()">
+            <i class="fa fa-refresh fa-lg"></i>
+        </a>
+    </span>
+</nav>
+
+<div class="well" id="route_info_div">
+    <div class="row">
+        <div class="col-xs-6">
+            기점 - {{ststopnm}}
+        </div>
+        <div class="col-xs-6">
+            종점 - {{edstopnm}}
+        </div>
+    </div>
+    <div class="row">
+        <firstlast-tm time-object="getTimeObject">
+    </div>
+    <div class="row">
+        <day-term term-object="termObject"></day-term>
+    </div>
+</div>
+
+<ul class="nav nav-tabs nav-justified" ng-show="trnseq_check">
+    <li role="presentation" ng-class="{active:updown_toggle}">
+        <a ng-click="updown_toggle = true">
+            상행 방향
+        </a>
+    </li>
+    <li role="presentation" ng-class="{active:!updown_toggle}">
+        <a ng-click="updown_toggle = false">
+            하행 방향
+        </a>
+    </li>
+</ul>
+
+<div class="container" ng-show="updown_toggle">
+    <div class="list-group">
+        <!--노선 최근 검색 format-->
+        <!--노선 이름, 종점 <-> 기점, 지역-->
+        <a class="list-group-item displayedList_item" ng-repeat="station in upstation"
+           ng-click="goRouteToStationDetail(station)">
+            <div class="row">
+                <div class="col-xs-9">
+                    <span><h5>{{station.stopnm}}</h5></span>
+                    <span style="color:#939393;"><h6>{{station.arsid != null ? station.arsid : ""}}</h6></span>
+                </div>
+                <div class="col-xs-3" class="arrow_div">
+                    <div class="route_line"></div>
+                    <div class="route_triangle"></div>
+                    <img ng-show="positionCheck_up(station.seq)" src='/images/busIcon_sm.png' class="bus_icon_inRoute">
+                    <div class="route_ribbon"></div>
+                    <div class="route_line"></div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="container" ng-show="!updown_toggle">
+    <div class="list-group">
+        <!--노선 최근 검색 format-->
+        <!--노선 이름, 종점 <-> 기점, 지역-->
+        <a class="list-group-item displayedList_item" ng-repeat="station in downstation | reverse"
+           ng-click="goRouteToStationDetail(station)">
+            <div class="row">
+                <div class="col-xs-9">
+                    <span><h5>{{station.stopnm}}</h5></span>
+                    <span style="color:#939393;"><h6>{{station.arsid != null ? station.arsid : ""}}</h6></span>
+                </div>
+                <div class="col-xs-3" class="arrow_div">
+                    <div class="route_line"></div>
+                    <div class="rotate_route_ribbon"></div>
+                    <img ng-show="positionCheck_down(station.seq)" src='/images/busIcon_sm.png' class="bus_icon_inRoute">
+                    <div class="rotate_route_triangle"></div>
+                    <div class="route_line"></div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<toast></toast>
+
+<span us-spinner="{lines:11, length:4, width:4, radius:10, corners:1.0, rotate:0, trail:100, speed:1.0}"
+      spinner-key="routeDetail_spinner" ></span>

@@ -1,0 +1,47 @@
+<div class="swipe_div" ng-class="animate_value" data-wow-duration="0.4s">
+    <div>
+        <div class="well bs-component search_div">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control place_searchInput" ng-model="startinfo" ng-autocomplete ng-change="sname(startinfo)"
+                               onClick="this.setSelectionRange(0, this.value.length)"
+                               placeholder="출발지를 입력해 주세요" options="options" details="startinfo_details" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control place_searchInput" ng-model="endinfo" ng-autocomplete ng-change="sname(endinfo)"
+                               onClick="this.setSelectionRange(0, this.value.length)"
+                               placeholder="도착지를 입력해 주세요" options="options" details="endinfo_details" />
+                    </div>
+                </div>
+                <button class="btn btn-block placeSearch_btn" ng-click="search()" >경로 검색</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <v-accordion class="vAccordion--default">
+        <v-pane ng-repeat="path in placeSearch_pathList">
+            <v-pane-header>
+                <i class="fa fa-bus"></i>
+                {{path.froutenm}}{{path.troutenm == null ? '' : ' > ' + path.troutenm}}
+            </v-pane-header>
+            <v-pane-content>
+                <div class="row">
+                    <div class="col-xs-10">
+                        <span><h5 style="margin-top:0px;">{{path.fstopnm}}{{path.tstopnm == null ? ' > ' : ' > ' + path.tstopnm + ' > '}}{{path.estopnm}}</h5></span>
+                        <span><h6>예상 거리 : {{ ( path.length / 1000 ) | limitTo:5}}km</h6></span>
+                        <span ng-show="walking_data"><h6>도보 : {{walk_dis}}m (약 {{walk_time}})</h6></span>
+                    </div>
+                    <div class="col-xs-2" ng-click="goPlaceDetail(path, google_directionObject)">
+                        <span><i class="fa fa-angle-right fa-3x"></i></span>
+                    </div>
+                </div>
+            </v-pane-content>
+        </v-pane>
+    </v-accordion>
+
+    <span us-spinner="{lines:11, length:4, width:4, radius:10, corners:1.0, rotate:0, trail:100, speed:1.0}" spinner-key="placeSearch_spinner"></span>
+</div>

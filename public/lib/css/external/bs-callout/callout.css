@@ -1,0 +1,45 @@
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    /*border-left-color: #687B8C;*/
+    border-left-color: #687B8C;
+
+    background-color: #ffffff;
+    /*background-color: #cbcbcb;*/
+    box-shadow: 0px 3px 3px lightgray;
+}
+.bookmark_btn {
+    padding:0px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #D8D8D8;
+    border-top:0px;
+    border-right:0px;
+    margin-bottom:0px;
+    height:inherit;
+
+}
+.empty_panel {
+    border-color: #ffffff;
+    background-color: #ffffff;
+    color: #ffffff;
+}
+
+.bookmark_btn:focus, .bookmark_btn:active {
+    background-color: rgb(207, 211, 218) !important;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}

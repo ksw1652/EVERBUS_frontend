@@ -1,0 +1,88 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="stationdetail_nav" role="navigation">
+    <a class="navbar-brand back_btn" ng-click="back_toStationsearch()">
+    <!--<a class="navbar-brand back_btn" href="javascript:history.back()">-->
+        <i class="fa fa-arrow-left fa-lg"></i>
+    </a>
+    <a class="navbar-brand" id="getStationNm_a">
+        {{getStationNm}}
+    </a>
+    <span class="btn-group pull-right">
+        <a class="navbar-brand" ng-click="addBookmark()">
+            <i class="fa fa-star-o fa-lg" ng-show="star_o"></i>
+            <i class="fa fa-star fa-lg" ng-show="star"></i>
+        </a>
+        <a class="navbar-brand" id="stationdetail_refresh_btn" ng-click="refresh()">
+            <i class="fa fa-refresh fa-lg"></i>
+        </a>
+    </span>
+</nav>
+
+<toast></toast>
+
+<map class="map_directive" center="{{mapCenter}}"  zoom="18"
+     map-lazy-load="http://maps.google.com/maps/api/js" >
+    <marker position="{{current_busstop.position}}" icon="/images/busStop_inMap.png" animation="Animation.BOUNCE"></marker>
+    <marker ng-repeat="busstop in non_busstops" position="{{[busstop.aroundx, busstop.aroundy]}}" icon="/images/non_busStop_inMap.png"
+        on-click="non_busstopClick(busstop)"></marker>
+</map>
+
+<!--<div class="container">-->
+    <div class="list-group">
+        <!--노선 최근 검색 format-->
+        <!--노선 이름, 종점 <-> 기점, 지역-->
+        <a class="list-group-item displayedList_item" ng-click="gostationToRouteDetail(route_item)"
+           ng-repeat="route_item in station_routeList | orderBy: 'routetype' ">
+            <div class="row">
+                <div class="col-xs-7">
+                    <span style="font-size: 18px;"><verify-routenm route-nm="route_item.routenm" route-type="route_item.routetype"></verify-routenm></span>
+                    <span style="font-size: 14px;"><change-routetype route-type="route_item.routetype"></change-routetype></span>
+                </div>
+                <div class="col-xs-5 blockquote-reverse">
+                    <h6><i class="fa fa-spinner fa-lg" ng-show="routeItem_loading" ng-class="{'fa-spin': routeItem_loading}"></i></h6>
+                    <h6 ng-show="!routeItem_loading">{{route_item.arrive_time == "" || route_item.arrive_time == undefined ? "" : route_item.arrive_time }}</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!--<span>{{route_item.citycd == 508 ? "["+route_item.routesubnm+ "]" : ""}}</span>-->
+                    <span style="font-size: 10px;">{{route_item.citycd == 508 || route_item.citycd == 504 || route_item.citycd == 502 || route_item.citycd == 601
+                        ? route_item.routesubnm: ""}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6" style="padding-right: 0px;">
+                    <!--<span style="color:#848484;">{{routesubnm_check(route_item.routeid, route_item.routenm)}}</span>-->
+                    <span style="font-size: 12px;">{{route_item.nextstopnm == null ? "" : "다음정류장 : " + route_item.nextstopnm}}</span>
+                </div>
+                <div class="col-xs-6 blockquote-reverse" style="padding-left: 0px;">
+                    <i class="fa fa-spinner fa-lg" ng-show="routeItem_loading" ng-class="{'fa-spin': routeItem_loading}"></i>
+                    <span style="font-size:12px;" ng-show="!routeItem_loading">{{route_item.cur_pos == "" || route_item.cur_pos == undefined ? '' : '현재위치 : ' + route_item.cur_pos}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+<!--</div>-->
+
+
+
+<!--<div class="list-group">
+    <a class="list-group-item" ng-repeat="route_item in station_routeList" ng-click="gostationToRouteDetail(route_item)">
+        <div class="row">
+            <div class="col-xs-5">
+                <h5>{{route_item.routenm | limitTo:18}}</h5>
+            </div>
+            <div class="col-xs-7">
+                <i class="fa fa-spinner fa-lg" ng-show="routeItem_loading" ng-class="{'fa-spin': routeItem_loading}"></i>
+                <h5 ng-show="!routeItem_loading">{{route_item.arrive_time}}</h5>
+                &lt;!&ndash;<div><h5>{{route_item.arrive_time}}</h5></div>&ndash;&gt;
+            </div>
+        </div>
+    </a>
+    <a class="list-group-item" ng-show="zeroLength_routeList">
+        도착 예정정보가 없습니다
+    </a>
+</div>-->
+
+<!--이벤트 기반으로 spinner를 시작하지 않으면 spinner-start-active를 true값으로 줘야함.-->
+<span us-spinner="{lines:11, length:4, width:4, radius:10, corners:1.0, rotate:0, trail:100, speed:1.0}"
+      spinner-key="stationDetail_spinner"></span>

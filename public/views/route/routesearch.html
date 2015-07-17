@@ -1,0 +1,86 @@
+<div class="swipe_div"
+     ng-class="animate_value" data-wow-duration="0.4s">
+    <div>
+        <div class="well bs-component search_div">
+            <input type="text" class="form-control input_searchNm" ng-model="search_routenm"  ng-change="update()"
+                   placeholder="노선 번호를 입력하세요" onfocus = "this.select()">
+        </div>
+    </div>
+
+    <div class="container searchResult_panel" ng-show="route_search_check">
+        <div class="list-group" z-infinite-scroll="loadMore_route" body-scroll="true">
+            <a class="wow slideInUp list-group-item displayedList_item" data-wow-duration="0.5s" bindonce
+               ng-repeat="routes in route_displayedList | groupBy : citycd" ng-click="goRouteDetail(routes)">
+               <!--ng-repeat="routes in route_displayedList | orderBy : 'citycd' " ng-click="goRouteDetail(routes)">-->
+                <!--내부적으로 check_topRegionDiv 함수를 두번 호출함.. 따라서 bindonce 지시자를 통해 한번만 호출하도록 해야함.-->
+                <div bo-if="check_topRegionDiv(routes.citycd)" class="topRegion_div">
+                    <change-entoko english-name="routes.cityennm"></change-entoko>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>
+                            <verify-routenm route-nm="routes.routenm" route-type="routes.routetype"></verify-routenm>
+                            <change-routetype route-type="routes.routetype"></change-routetype>
+                            <span>{{routes.citycd == 508 ? "["+routes.routeid + "]": ""}}</span>
+                        </h5>
+                    </div>
+                    <div class="col-xs-12">
+
+                    </div>
+                    <div class="col-xs-9">
+                        <h6>
+                            <span bo-bind="routes.ststopnm != null ? routes.ststopnm + ' <-->' : '' "></span>
+                            <span bo-bind="routes.edstopnm != null ? routes.edstopnm : '' "></span>
+                        </h6>
+                    </div>
+                    <div class="col-xs-3 region_div">
+                        <h6>
+                            <change-entoko english-name="routes.cityennm"></change-entoko>
+                        </h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container searchResult_panel" ng-show="route_recentlySearch">
+        <div class="route_recent_search_div">
+            노선 최근 검색
+        </div>
+        <div class="list-group">
+            <!--노선 최근 검색 format-->
+            <!--노선 이름, 종점 <-> 기점, 지역-->
+            <a class="list-group-item displayedList_item" mn-touch  bindonce
+               secure-tap="goRouteDetail(routes)"  hold="open($index)"
+               ng-repeat="routes in recently_search_routeList | $search_reverse_filter">
+
+                <!--a 태그의 클릭과 닫기 버튼의 클릭이 동시에 동작함. 따라서 아래의 div에 ng-click을 이동.-->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>
+                            <verify-routenm route-nm="routes.routenm" route-type="routes.routetype"></verify-routenm>
+                            <change-routetype route-type="routes.routetype"></change-routetype>
+                        </h5>
+                        <!--<span><h5>{{routes.routenm}}</h5></span>-->
+                    </div>
+                    <div class="col-xs-9">
+                        <h6>
+                            <span bo-bind="routes.ststopnm != null ? routes.ststopnm + ' <-->' : '' "></span>
+                            <span bo-bind="routes.edstopnm != null ? routes.edstopnm : '' "></span>
+                        </h6>
+
+                    </div>
+                    <div class="col-xs-3 region_div">
+                        <h6>
+                            <change-entoko english-name="routes.cityennm"></change-entoko>
+                        </h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <span us-spinner="{lines:11, length:4, width:4, radius:10, corners:1.0, rotate:0, trail:100, speed:1.0}" spinner-key="routeSearch_spinner"></span>
+</div>
+
+

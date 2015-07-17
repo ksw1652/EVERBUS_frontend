@@ -1,0 +1,22 @@
+/************* contactus.html *************/
+.pad-top {
+    padding-top:40px;
+}
+.panel-title-adjust{
+    font-size: 15px;
+    padding: 5px;
+}
+.panel-title-adjust a:hover, a:link, a:visited, a:active {
+    text-decoration:none;
+}
+
+/************** contactusdetail.html ****************/
+#contactusdetail_nav {
+    margin-bottom:0px;
+    background-color: #FFA344;
+}
+
+.contactusdetail_jumbo{
+    margin-bottom: 25px;
+    margin-top : 25px;
+}

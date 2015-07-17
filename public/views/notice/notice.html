@@ -1,0 +1,18 @@
+<div class="container" id="notice_div" ng-class="animate_value" data-wow-duration="0.4s">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box" style="background-color: #FFFFFF;">
+                <div class="box-icon">
+                    <span class="fa fa-4x fa-bullhorn"></span>
+                </div>
+                <div class="info" style="text-align: justify;">
+                    <h5 class="text-center">공지사항</h5>
+                    <!--<p>{{noticeMessage}}</p>-->
+                    <p class="lead" style="text-align: -webkit-center;">EVERBUS{{app_version}}</p>
+                    <small ng-bind-html="notice_message">
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

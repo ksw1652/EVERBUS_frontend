@@ -1,0 +1,71 @@
+<div class="swipe_div" ng-class="animate_value" data-wow-duration="0.4s">
+    <div>
+        <div class="well bs-component search_div">
+            <input type="text" class="form-control input_searchNm" ng-model="search_stationnm"  ng-change="update()"
+                   placeholder="정류소 명을 입력하세요" onfocus = "this.select()">
+        </div>
+    </div>
+
+    <div class="container searchResult_panel" ng-show="station_search_check">
+        <div class="list-group" z-infinite-scroll="loadMore_station" body-scroll="true">
+            <a class="wow slideInUp list-group-item displayedList_item" data-wow-duration="0.3s" bindonce
+               ng-repeat="stations in station_displayedList" ng-click="goStationDetail(stations)">
+                <div bo-if="check_topRegionDiv(stations.citycd)" class="topRegion_div">
+                    <change-entoko english-name="stations.cityennm"></change-entoko>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5 bo-bind="stations.stopnm"></h5>
+                    </div>
+                    <div class="col-xs-9">
+                        <h6>
+                            <span bo-bind="stations.arsid != null ? stations.arsid : '' "></span>
+                            <span>{{stations.citycd == 508 ? "["+stations.stopsubnm+ "]" : ""}}</span>
+                        </h6>
+                    </div>
+                    <div class="col-xs-3 region_div">
+                        <h6>
+                            <change-entoko english-name="stations.cityennm"></change-entoko>
+                        </h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container searchResult_panel" ng-show="station_recentlySearch">
+        <div class="station_recent_search_div">
+            정류소 최근 검색
+        </div>
+        <div class="list-group">
+            <!--정류소 최근 검색 format-->
+            <!--정류소 이름, arsid, 지역-->
+            <a class="list-group-item displayedList_item"
+               mn-touch secure-tap="goRouteDetail(routes)"  hold="open($index)"
+               ng-repeat="item in recently_search_stationList | $search_reverse_filter">
+                <!--<button type="button" class="close close_button" ng-click="open($index)">
+                    <i class="fa fa-times-circle-o"></i>
+                </button>-->
+                <!--a 태그의 클릭과 닫기 버튼의 클릭이 동시에 동작함. 따라서 아래의 div에 ng-click을 이동.-->
+                <div class="row" ng-click="goStationDetail(item)">
+                    <div class="col-xs-12">
+                        <span><h5>{{item.stopnm}}</h5></span>
+                    </div>
+                    <div class="col-xs-9">
+                        <h6>
+                            <span>{{item.arsid != null ? item.arsid : '&nbsp;'}}</span>
+                            <span>{{item.citycd == 508 ? "["+item.stopsubnm+ "]" : ""}}</span>
+                        </h6>
+                    </div>
+                    <div class="col-xs-3 region_div">
+                        <h6>
+                            <change-entoko english-name="item.cityennm"></change-entoko>
+                        </h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <span us-spinner="{lines:11, length:4, width:4, radius:10, corners:1.0, rotate:0, trail:100, speed:1.0}" spinner-key="stationSearch_spinner"></span>
+</div>
